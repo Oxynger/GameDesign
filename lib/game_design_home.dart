@@ -7,46 +7,35 @@ class GameDesignHome extends StatefulWidget {
 
 class _GameDisigneState extends State<GameDesignHome>
     with SingleTickerProviderStateMixin {
-  TabController _menuControler;
+  TabController _menuController;
+
+  final List<Tab> headerBar = [
+    Tab(icon: Icon(Icons.home), text: 'Home'),
+    Tab(icon: Icon(Icons.shuffle), text: 'Random'),
+    Tab(icon: Icon(Icons.sort), text: 'Sort'),
+    Tab(icon: Icon(Icons.favorite), text: 'Favorite'),
+  ];
 
   @override
   void initState() {
     super.initState();
-    _menuControler = TabController(vsync: this, initialIndex: 0, length: 4);
+    _menuController = TabController(vsync: this, length: headerBar.length);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: Theme.of(context).iconTheme,
         title: Text('Game Design'),
         bottom: TabBar(
-          controller: _menuControler,
+          controller: _menuController,
           indicatorColor: Colors.orange,
-          tabs: <Widget>[
-            Tab(
-              icon: Icon(Icons.home),
-              text: 'Leans',
-            ),
-            Tab(
-              icon: Icon(Icons.shuffle),
-              text: 'Random',
-            ),
-            Tab(
-              icon: Icon(Icons.sort),
-              text: 'Sort',
-            ),
-            Tab(
-              icon: Icon(Icons.favorite),
-              text: 'Favorite',
-            )
-          ],
+          tabs: headerBar,
         ),
         actions: <Widget>[
           Icon(Icons.search),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0),
-          ),
+          Padding(padding: EdgeInsets.symmetric(horizontal: 5.0)),
           Icon(Icons.more_vert),
         ],
       ),
