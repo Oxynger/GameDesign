@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:game_design_lens/pages/card_screen.dart';
+import 'package:game_design_lens/pages/favorite_screen.dart';
+import 'package:game_design_lens/pages/home_screen.dart';
 
 class GameDesignHome extends StatefulWidget {
   @override
@@ -12,7 +15,6 @@ class _GameDisigneState extends State<GameDesignHome>
   final List<Tab> headerBar = [
     Tab(icon: Icon(Icons.home), text: 'Home'),
     Tab(icon: Icon(Icons.shuffle), text: 'Random'),
-    Tab(icon: Icon(Icons.sort), text: 'Sort'),
     Tab(icon: Icon(Icons.favorite), text: 'Favorite'),
   ];
 
@@ -37,6 +39,16 @@ class _GameDisigneState extends State<GameDesignHome>
           Icon(Icons.search),
           Padding(padding: EdgeInsets.symmetric(horizontal: 5.0)),
           Icon(Icons.more_vert),
+
+        ],
+        
+      ),
+      body: TabBarView(
+        controller: _menuController,
+        children: <Widget>[
+          HomeScreen(),
+          CardScreen(),
+          FavoriteScreen(),
         ],
       ),
     );
